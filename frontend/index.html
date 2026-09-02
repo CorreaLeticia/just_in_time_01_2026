@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Just in Time</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <section id="tela-login" class="tela ativa">
+
+        <div class="login-container">
+
+            <div class="login-card">
+
+                <div class="logo">
+                    <h1>JUST IN TIME</h1>
+                    <p>Gestão de Produção</p>
+                </div>
+
+                <form id="form-login">
+
+                    <div class="campo">
+                        <label for="email">E-mail</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            placeholder="Digite seu e-mail"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo">
+                        <label for="senha">Senha</label>
+                        <input 
+                            type="password" 
+                            id="senha" 
+                            placeholder="Digite sua senha"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" class="btn-principal">
+                        Entrar
+                    </button>
+
+                    <p id="mensagem-login" class="mensagem"></p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="sistema" class="tela">
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+                <h2>JUST IN TIME</h2>
+                <span>Gestão de Produção</span>
+            </div>
+
+            <nav>
+
+                <button class="menu-item ativo" data-tela="dashboard">
+                    Dashboard
+                </button>
+
+                <button class="menu-item" data-tela="produtos">
+                    Produtos
+                </button>
+
+                <button class="menu-item" data-tela="producao">
+                    Produção
+                </button>
+
+            </nav>
+
+            <button id="btn-logout" class="btn-logout">
+                Sair
+            </button>
+
+        </aside>
+
+        <main class="conteudo">
+
+            <header class="header">
+
+                <div>
+                    <h1 id="titulo-pagina">Dashboard</h1>
+                    <p>Controle sua produção de forma eficiente.</p>
+                </div>
+
+                <div class="usuario-logado">
+                    <span>Usuário</span>
+                    <strong id="nome-usuario">Usuário</strong>
+                </div>
+
+            </header>
+
+            <section id="dashboard" class="pagina ativa">
+
+                <div class="cards">
+
+                    <div class="card">
+                        <span>Produtos cadastrados</span>
+                        <strong id="total-produtos">0</strong>
+                    </div>
+
+                    <div class="card">
+                        <span>Estoque baixo</span>
+                        <strong id="estoque-baixo">0</strong>
+                    </div>
+
+                    <div class="card">
+                        <span>Pedidos</span>
+                        <strong id="total-pedidos">0</strong>
+                    </div>
+
+                    <div class="card">
+                        <span>Produções</span>
+                        <strong id="total-producoes">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="painel">
+
+                    <div class="painel-header">
+                        <h2>Resumo do sistema</h2>
+                    </div>
+
+                    <p>
+                        Acompanhe os produtos, pedidos e produções
+                        registrados no sistema.
+                    </p>
+
+                </div>
+
+            </section>
+
+            <section id="produtos" class="pagina">
+
+                <div class="pagina-header">
+
+                    <div>
+                        <h2>Produtos</h2>
+                        <p>Gerencie os produtos cadastrados.</p>
+                    </div>
+
+                    <button id="btn-novo-produto" class="btn-principal">
+                        + Novo produto
+                    </button>
+
+                </div>
+
+
+                <div class="barra-pesquisa">
+
+                    <input 
+                        type="text"
+                        id="busca-produto"
+                        placeholder="Buscar produto..."
+                    >
+
+                    <button id="btn-buscar">
+                        Buscar
+                    </button>
+
+                </div>
+
+
+                <div class="tabela-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>ID</th>
+                                <th>Produto</th>
+                                <th>Descrição</th>
+                                <th>Custo</th>
+                                <th>Estoque</th>
+                                <th>Mínimo</th>
+                                <th>Ações</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="tabela-produtos">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+            <section id="producao" class="pagina">
+
+                <div class="pagina-header">
+
+                    <div>
+                        <h2>Gestão de Produção</h2>
+                        <p>
+                            Registre pedidos e produtos fabricados.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="producao-container">
+
+                    <form id="form-movimentacao">
+
+                        <div class="campo">
+
+                            <label for="produto-movimentacao">
+                                Produto
+                            </label>
+
+                            <select id="produto-movimentacao" required>
+
+                                <option value="">
+                                    Selecione um produto
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label for="tipo-movimentacao">
+                                Tipo de movimentação
+                            </label>
+
+                            <select id="tipo-movimentacao" required>
+
+                                <option value="">
+                                    Selecione
+                                </option>
+
+                                <option value="fabricado">
+                                    Fabricado
+                                </option>
+
+                                <option value="pedido">
+                                    Pedido
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label for="quantidade">
+                                Quantidade
+                            </label>
+
+                            <input
+                                type="number"
+                                id="quantidade"
+                                min="1"
+                                placeholder="Digite a quantidade"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label for="data-movimentacao">
+                                Data
+                            </label>
+
+                            <input
+                                type="date"
+                                id="data-movimentacao"
+                                required
+                            >
+
+                        </div>
+
+
+                        <button type="submit" class="btn-principal">
+                            Registrar movimentação
+                        </button>
+
+                    </form>
+
+
+                    <div id="alerta-estoque" class="alerta">
+
+                        <!-- Alerta de estoque será exibido aqui -->
+
+                    </div>
+
+                </div>
+
+
+                <div class="painel">
+
+                    <h2>Movimentações recentes</h2>
+
+                    <div class="tabela-container">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Tipo</th>
+                                    <th>Quantidade</th>
+                                    <th>Data</th>
+                                    <th>Usuário</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="tabela-movimentacoes">
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </section>
+
+    <div id="modal-produto" class="modal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2 id="titulo-modal">
+                    Novo produto
+                </h2>
+
+                <button id="fechar-modal">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="form-produto">
+
+                <input type="hidden" id="produto-id">
+
+
+                <div class="campo">
+
+                    <label for="nome-produto">
+                        Nome
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nome-produto"
+                        placeholder="Nome do produto"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="descricao-produto">
+                        Descrição
+                    </label>
+
+                    <textarea
+                        id="descricao-produto"
+                        placeholder="Descrição do produto"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="custo-produto">
+                        Custo
+                    </label>
+
+                    <input
+                        type="number"
+                        id="custo-produto"
+                        step="0.01"
+                        min="0"
+                        placeholder="0,00"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="estoque-produto">
+                        Quantidade em estoque
+                    </label>
+
+                    <input
+                        type="number"
+                        id="estoque-produto"
+                        min="0"
+                        placeholder="0"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="minimo-produto">
+                        Estoque mínimo
+                    </label>
+
+                    <input
+                        type="number"
+                        id="minimo-produto"
+                        min="0"
+                        placeholder="0"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="modal-botoes">
+
+                    <button
+                        type="button"
+                        id="cancelar-modal"
+                        class="btn-secundario"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn-principal"
+                    >
+                        Salvar produto
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
